@@ -1,4 +1,4 @@
-const API_KEY = ''; // Paste your API key, see at miute (10:08)
+let API_KEY = ''; // Will be loaded from api.key file
 
 const content = document.getElementById('content');
 const chatInput = document.getElementById('chatInput');
@@ -6,6 +6,32 @@ const sendButton = document.getElementById('sendButton');
 
 let isAnswerLoading = false;
 let answerSectionId = 0;
+
+// Disable send button until API key is loaded
+sendButton.classList.add('send-button-nonactive');
+
+// Load API key from file
+fetch('api.key')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to load API key');
+        }
+        return response.text();
+    })
+    .then(key => {
+        API_KEY = key.trim();
+        // Enable the send button once API key is loaded
+        sendButton.classList.remove('send-button-nonactive');
+        console.log('API key loaded successfully');
+    })
+    .catch(error => {
+        console.error('Error loading API key:', error);
+        // Display error message in chat
+        const errorSection = document.createElement('section');
+        errorSection.className = 'answer-section';
+        errorSection.textContent = 'Error: Could not load API key. Please check the api.key file exists.';
+        content.appendChild(errorSection);
+    });
 
 sendButton.addEventListener('click', () => handleSendMessage());
 chatInput.addEventListener('keypress', event => {
