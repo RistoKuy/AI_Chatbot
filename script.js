@@ -3,9 +3,31 @@ let API_KEY = ''; // Will be loaded from api.key file
 const content = document.getElementById('content');
 const chatInput = document.getElementById('chatInput');
 const sendButton = document.getElementById('sendButton');
+const themeToggle = document.getElementById('theme-toggle'); // Add theme toggle reference
 
 let isAnswerLoading = false;
 let answerSectionId = 0;
+
+// Theme toggle functionality
+themeToggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark-mode');
+    
+    // Save preference to localStorage
+    if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+// Load saved theme preference
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeToggle.checked = true;
+    }
+});
 
 // Disable send button until API key is loaded
 sendButton.classList.add('send-button-nonactive');
@@ -124,6 +146,12 @@ function removeBoldSyntax(text) {
     if (!text) return '';
     // Replace **text** with just text (remove the asterisks)
     return text.replace(/\*\*(.*?)\*\*/g, '$1');
+}
+
+function removeHashtagSyntax(text) {
+    if (!text) return '';
+    // Replace #### with an empty string
+    return text.replace(/####/g, '');
 }
 
 function getLoadingSvg() {
