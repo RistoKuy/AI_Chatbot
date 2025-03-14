@@ -114,8 +114,16 @@ function addAnswerSection(message) {
     } else {
         // Fill in the answer once it's received
         const answerSectionElement = document.getElementById(answerSectionId);
-        answerSectionElement.textContent = message;
+        // Remove bold syntax from the bot's response
+        answerSectionElement.textContent = removeBoldSyntax(message);
     }
+}
+
+// Function to remove markdown bold syntax from text
+function removeBoldSyntax(text) {
+    if (!text) return '';
+    // Replace **text** with just text (remove the asterisks)
+    return text.replace(/\*\*(.*?)\*\*/g, '$1');
 }
 
 function getLoadingSvg() {
