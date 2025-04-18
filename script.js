@@ -27,6 +27,20 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('dark-mode');
         themeToggle.checked = true;
     }
+    
+    // Initialize marked.js with options
+    marked.use({
+        breaks: true,
+        gfm: true,
+        headerIds: false
+    });
+    
+    // Convert initial welcome message to Markdown
+    const initialMessage = document.querySelector('.answer-section');
+    if (initialMessage) {
+        const originalText = initialMessage.textContent.trim();
+        initialMessage.innerHTML = marked.parse(originalText);
+    }
 });
 
 // Disable send button until API key is loaded
@@ -136,8 +150,24 @@ function addAnswerSection(message) {
     } else {
         // Fill in the answer once it's received
         const answerSectionElement = document.getElementById(answerSectionId);
-        // Remove bold syntax from the bot's response
-        answerSectionElement.textContent = removeBoldSyntax(message);
+        // Render markdown in the bot's response
+        answerSectionElement.innerHTML = renderMarkdown(message);
+    }
+}
+
+// Function to render markdown to HTML
+function renderMarkdown(text) {
+    if (!text) return '';
+    try {
+        // Convert markdown to HTML using marked
+        return marked.parse(text);
+    } catch (error) {
+        console.error('Error rendering markdown:', error);
+        // Fallback to plain text with formatting removed if markdown parsing fails
+        return text.replace(/\*\*(.*?)\*\*/g, '$1')
+                  .replace(/\*(.*?)\*/g, '$1')
+                  .replace(/`(.*?)`/g, '$1')
+                  .replace(/^#+\s+(.*)$/mg, '$1');
     }
 }
 

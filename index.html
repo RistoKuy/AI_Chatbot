@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Risto's Chatbot</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Add Marked.js library for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="script.js" defer></script>
 </head>
 
@@ -21,7 +23,17 @@
             <h2 class="title">Risto's Chatbot</h2>
         </header>
         <div class="content" id="content">
-            <section class="answer-section">Hello! How can i help you today? 👋😊</section>
+            <section class="answer-section" id="welcome-message">
+                # Welcome to Risto's Chatbot! 👋
+ I can help you with a variety of tasks. Here are some things I can do:
+                
+* Answer questions
+* Provide information
+* Format text with **bold**, *italic*, and `code`
+* Create lists and tables
+                
+How can I help you today?
+            </section>
             <!-- <section class="question-section">
                 Hello!
             </section> -->

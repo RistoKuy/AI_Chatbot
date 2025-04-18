@@ -79,42 +79,225 @@ body.dark-mode .title {
 
 /* Question and answer sections styling */
 .question-section, .answer-section {
-    padding: 10px 15px;
+    padding: 15px;
     margin-bottom: 15px;
     border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Answer section specific styling */
 .answer-section {
-    padding: 0.5rem;
-    border-radius: 0.5rem 0.5rem 0.5rem 0;
+    color: #333333;
+    border-radius: 1rem 1rem 1rem 0;
     width: fit-content;
-    display: flex;
-    align-items: center;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-}
-
-.question-section {
-    color: white;
-    padding: 0.5rem;
-    width: fit-content;
-    border-radius: 0.5rem 0.5rem 0rem 0.5rem;
-    margin-left: auto;
-    overflow-wrap: anywhere;
-}
-
-body.dark-mode .question-section {
-    background-color: #2b2d42;
-}
-
-.answer-section {
-    background-color: #4361ee;
-    color: white;
+    max-width: 80%;
     margin-right: 20%;
+    display: block;
+    overflow-wrap: break-word;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: transparent;
 }
 
 body.dark-mode .answer-section {
-    background-color: #4cc9f0;
+    color: #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: transparent;
+}
+
+.answer-section h1, 
+.answer-section h2, 
+.answer-section h3, 
+.answer-section h4, 
+.answer-section h5, 
+.answer-section h6 {
+    margin-top: 10px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #1a73e8;
+}
+
+body.dark-mode .answer-section h1,
+body.dark-mode .answer-section h2, 
+body.dark-mode .answer-section h3, 
+body.dark-mode .answer-section h4, 
+body.dark-mode .answer-section h5, 
+body.dark-mode .answer-section h6 {
+    color: #4cc9f0;
+}
+
+.answer-section h1 { font-size: 1.5em; }
+.answer-section h2 { font-size: 1.3em; }
+.answer-section h3 { font-size: 1.2em; }
+.answer-section h4 { font-size: 1.1em; }
+.answer-section h5 { font-size: 1em; }
+.answer-section h6 { font-size: 0.9em; }
+
+.answer-section p {
+    margin-bottom: 10px;
+}
+
+.answer-section ul, 
+.answer-section ol {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+.answer-section li {
+    margin-bottom: 5px;
+}
+
+.answer-section code {
+    font-family: 'Consolas', 'Monaco', monospace;
+    background-color: transparent;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: #d63384;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .answer-section code {
+    background-color: transparent;
+    color: #ff7edb;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.answer-section pre {
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .answer-section pre {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.answer-section pre code {
+    background-color: transparent;
+    padding: 0;
+    color: #333;
+}
+
+body.dark-mode .answer-section pre code {
+    color: #e0e0e0;
+}
+
+.answer-section blockquote {
+    border-left: 3px solid #1a73e8;
+    padding-left: 10px;
+    margin-left: 0;
+    margin-bottom: 10px;
+    font-style: italic;
+    background-color: transparent;
+}
+
+body.dark-mode .answer-section blockquote {
+    border-left-color: #4cc9f0;
+    background-color: transparent;
+}
+
+.answer-section table {
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.answer-section th, 
+.answer-section td {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 6px 10px;
+    text-align: left;
+}
+
+body.dark-mode .answer-section th,
+body.dark-mode .answer-section td {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.answer-section th {
+    background-color: transparent;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .answer-section th {
+    background-color: transparent;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.question-section {
+    color: #333333;
+    padding: 12px 15px;
+    width: fit-content;
+    max-width: 80%;
+    border-radius: 1rem 1rem 0 1rem;
+    margin-left: auto;
+    overflow-wrap: break-word;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+}
+
+body.dark-mode .question-section {
+    color: #e5e7eb;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: transparent;
+}
+
+/* Welcome message specific styling */
+#welcome-message {
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+    color: #333333;
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode #welcome-message {
+    color: #e5e7eb;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#welcome-message h1 {
+    color: #1a73e8;
+    margin-top: 0;
+    font-size: 1.4em;
+}
+
+body.dark-mode #welcome-message h1 {
+    color: #60a5fa;
+}
+
+#welcome-message ul {
+    margin-top: 8px;
+}
+
+#welcome-message p,
+#welcome-message li {
+    line-height: 1.5;
+}
+
+#welcome-message code {
+    background-color: transparent;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9em;
+    color: #d63384;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode #welcome-message code {
+    background-color: transparent;
+    color: #ff7edb;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Chat form styling */
