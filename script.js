@@ -92,7 +92,7 @@ function handleSendMessage() {
 
 function getAnswer(question) {
     const fetchData =
-        fetch("https://llm.chutes.ai/v1/chat/completions", {
+        fetch("https://openrouter.ai/api/v1/chat/completions", {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${API_KEY}`,
