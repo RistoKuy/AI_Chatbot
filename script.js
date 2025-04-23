@@ -92,14 +92,14 @@ function handleSendMessage() {
 
 function getAnswer(question) {
     const fetchData =
-        fetch("https://openrouter.ai/api/v1/chat/completions", {
+        fetch("https://llm.chutes.ai/v1/chat/completions", {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${API_KEY}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                "model": "deepseek/deepseek-r1-distill-llama-70b:free",
+                "model": "deepseek-ai/DeepSeek-V3-0324",
                 "messages": [
                     {
                         "role": "user",
